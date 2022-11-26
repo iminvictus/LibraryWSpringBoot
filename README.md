@@ -16,9 +16,9 @@ By default it uses Hibernate, so do not forget to create and set up `application
 
 **#** Data source config <br/>
 spring.datasource.driver-class-name=org.postgresql.Driver <br/>
-spring.datasource.url=jdbc:postgresql://localhost:5432/hiber_db <br/>
-spring.datasource.username=postgres <br/>
-spring.datasource.password=postgres <br/>
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_db <br/>
+spring.datasource.username=user <br/>
+spring.datasource.password=password <br/>
 **#** Hibernate config <br/>
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect <br/>
 spring.jpa.properties.hibernate.show_sql=true <br/>
