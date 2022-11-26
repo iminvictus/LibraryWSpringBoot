@@ -14,7 +14,7 @@ Spring Web starter, Thymeleaf, Hibernate validation, Lombok, PostgreSQL JDBC Dri
 By default it uses Hibernate, so do not forget to create and set up `application.properties` in `resources`<br/>
 ### Example of `application.properties`:
 
-**#** Data source config
+**#** Data source config <br/>
 spring.datasource.driver-class-name=org.postgresql.Driver <br/>
 spring.datasource.url=jdbc:postgresql://localhost:5432/hiber_db <br/>
 spring.datasource.username=postgres <br/>
