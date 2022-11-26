@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person</title>
+</head>
+<body>
+<p th:text="${person.getName() + ', birth ' + person.getDateOfBirth()}">person</p>
+<a th:text="${person.getEmail()}">email</a>
+
+<div th:if="${books}">
+    <hr/>
+    <b>Books borrowed by person:</b>
+    <br/>
+    <table th:each="book : ${books}">
+        <a th:style="${book.isExpired()} ? 'color: red' : 'color: black'"
+            th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">book</a>
+        <span th:style="'color:red'" th:text="${book.isExpired()} ? ' (expired)' : ''"></span>
+    </table>
+</div>
+<div th:unless="${books}">
+    <p>Person do not have any books</p>
+    <hr/>
+</div>
+
+<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+    <input type="submit" value="Edit person">
+</form>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete person">
+</form>
+<hr/>
+<a href="/people">All people</a>
+<br/>
+<hr/>
+<a href="/books">All books</a>
+<br/>
+<hr/>
+<a href="/">Home page</a>
+</body>
+</html>

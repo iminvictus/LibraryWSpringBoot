@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book search page</title>
+</head>
+<body>
+
+<div class="frame">
+    <form th:method="GET" th:action="@{/books/search}">
+        <label for="startsWith">Enter search query:</label>
+        <input th:type="text" id="startsWith" th:name="startsWith">
+        <br/>
+        <input type="submit" class="button" value="Search">
+    </form>
+    <div th:if="${results}">
+        <div th:if="${results.isEmpty()}">
+            <br>
+            <a>No results</a>
+            <br>
+        </div>
+        <div th:each="book : ${results}">
+            <br>
+            <p th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getPublicationYear()}">book</p>
+            <div th:if="${book.getOwner()}">
+                <a th:style="${book.isExpired()} ? 'color: red' : 'color: black'"
+                   th:text="'Owned by: ' + ${book.getOwner().getName()}">owner</a>
+            </div>
+            <div th:unless="${book.getOwner()}">
+                <a th:text="'Book is not assigned to anyone'">free</a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+<br/>
+<hr/>
+<a href="/people">All people</a>
+<br/>
+<hr/>
+<a href="/books">All books</a>
+<br/>
+<hr/>
+<a href="/">Home page</a>
+
+</body>
+</html>
